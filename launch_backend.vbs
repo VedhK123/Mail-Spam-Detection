@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "python C:\Users\vedhk\OneDrive\APCOMPSCIAPROJECTS\Desktop\Extension Project\Mail Spam Detection\app.py", 0, True

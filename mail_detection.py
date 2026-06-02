@@ -6,6 +6,8 @@ from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+import joblib
+
 
 # Download the stopwords from NLTK
 nltk.download('stopwords')
@@ -49,26 +51,6 @@ clf.fit(X_train, y_train)
 # evaluates the performance of the trained model on the test set (X_test and y_test) by calculating the accuracy score, which is the proportion of correctly classified instances in the test set. The score is printed to the console.
 print(clf.score(X_test, y_test))
 
-
-
-
-#creates a sample email
-sample_email = """Congratulations! You've won a free ticket to the Bahamas! Click here to claim your prize now! Don't miss out on this amazing opportunity to relax on the beach and enjoy the sun. Act fast, as this offer won't last forever!"""
-
-# sets the email to lowercase 
-email_text = sample_email.lower()
-# removes punctuation and splits each word into an array
-email_text = email_text.translate(str.maketrans('', '', string.punctuation)).split()
-# stems each word in the email so it is in its root form and filters out common words with little semantic meaning (stop words)
-email_text = [stemmer.stem(word) for word in email_text if word not in stop_words]
-# joins the words back together
-email_text = ' '.join(email_text)
-
-# creates a corpus from the email text
-email_corpus = [email_text]
-
-# creates tokens from the email corpus using the same vectorizer that was used to create the training data
-X_email = vectorizer.transform(email_corpus)
-
-#predicts spam or ham
-print(clf.predict(X_email))
+joblib.dump(clf, 'spam_classifier.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')
+print("Model and Vectorizer saved successfully!")

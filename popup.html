@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 15px;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h3 {
+      margin-top: 0;
+      color: #1a73e8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-container {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #dadce0;
+      margin-bottom: 15px;
+    }
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .badge {
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.loading { background: #e8eaed; color: #5f6368; }
+    .badge.connected { background: #e6f4ea; color: #137333; }
+    .badge.disconnected { background: #fce8e6; color: #c5221f; }
+    
+    .instructions {
+      font-size: 12px;
+      color: #5f6368;
+      line-height: 1.4;
+    }
+    ul {
+      margin: 5px 0 0 0;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h3>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: #1a73e8;">
+      <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-15h-2v6h2V7zm0 8h-2v2h2v-2z"/>
+    </svg>
+    Gmail Spam AI
+  </h3>
+
+  <div class="status-container">
+    <div class="status-row">
+      <span>Server:</span>
+      <span id="serverStatus" class="badge loading">Checking...</span>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <strong>How it works:</strong>
+    <ul>
+      <li>Open your Gmail inbox.</li>
+      <li>The extension automatically reads email previews.</li>
+      <li>Inserts a <span style="color: #c5221f; font-weight:bold;">[SPAM]</span> or <span style="color: #137333; font-weight:bold;">[SAFE]</span> badge instantly.</li>
+    </ul>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
